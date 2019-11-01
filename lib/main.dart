@@ -9,6 +9,8 @@ import 'logoCircle_sec.dart';
 import 'textstyle.dart';
 import 'footer1_sec.dart';
 import 'dart:html' as html;
+import 'flutter_html/flutter_html.dart';
+import 'package:html/dom.dart' as dom;
 
 void main() => runApp(MyApp());
 
@@ -61,12 +63,15 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Text(
                     api.duration ?? "",
-                    style: cTATSanaChonBoldTextStyle(cRed, isSmall ? 30.0 : 48.0),
+                    style:
+                        cTATSanaChonBoldTextStyle(cRed, isSmall ? 30.0 : 48.0),
                     textAlign: TextAlign.center,
                   ),
                   Transform.translate(
-                    offset: Offset(0,150),
-                    child: Divider(thickness: 1,)),
+                      offset: Offset(0, 150),
+                      child: Divider(
+                        thickness: 1,
+                      )),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: RaisedButton(
@@ -80,17 +85,17 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(12.0),
                         child: Text(
                           'ลงทะเบียน เฟส 2 \n ตัวแต่วันที่ 24 ต.ค.62 วันละ 2 รอบ เวลา 6.00 และ 18.00 น. \n(จำกัดจำนวนผู้ลงทะเบียนรอบละ 5 แสนคน รวม 1 ล้านคนต่อวัน)',
-                          style: cTATSanaChonBoldTextStyle(cWhite,isSmall ? 18 : 24.0),
+                          style: cTATSanaChonBoldTextStyle(
+                              cWhite, isSmall ? 18 : 24.0),
                           textAlign: TextAlign.center,
                         ),
                       ),
                       hoverColor: cYellow,
                     ),
                   ),
-                  
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: isSmall ? 16.0 : 100.0),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: isSmall ? 16.0 : 100.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -100,12 +105,14 @@ class _HomePageState extends State<HomePage> {
                               const EdgeInsets.only(top: 40.0, bottom: 16.0),
                           child: Text(
                             'มาตราการส่งเสริมการบริโภค${isSmall ? '' : '\n'}ในประเทศ ${isSmall ? '\n' : ''}"ชิมช้อปใช้"',
-                            style: cTATSanaChonBoldTextStyle(cRed,isSmall ? 24.0 : 36.0),
+                            style: cTATSanaChonBoldTextStyle(
+                                cRed, isSmall ? 24.0 : 36.0),
                           ),
                         ),
-                        Text(
-                          api.detail,
-                          style: cTATSanaSuksaTextStyle(cBlack, 18.0),
+                        Html(
+                          data: """${api.detail}""",
+                          defaultTextStyle:
+                              cTATSanaSuksaTextStyle(cBlack, 18.0),
                         ),
                         Padding(
                           padding:
@@ -115,9 +122,10 @@ class _HomePageState extends State<HomePage> {
                             style: cTATSanaChonBoldTextStyle(cBlack, 18.0),
                           ),
                         ),
-                        Text(
-                          api.condition,
-                          style: cTATSanaSuksaTextStyle(cBlack, 18.0),
+                        Html(
+                          data: """${api.condition}""",
+                          defaultTextStyle:
+                              cTATSanaSuksaTextStyle(cBlack, 18.0),
                         ),
                       ],
                     ),
